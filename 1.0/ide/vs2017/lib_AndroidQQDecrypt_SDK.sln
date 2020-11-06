@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AndroidQQDecryptSDK", "AndroidQQDecryptSDK\AndroidQQDecryptSDK.vcxproj", "{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_demo1", "test_demo1\test_demo1.vcxproj", "{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Debug|x64.ActiveCfg = Debug|x64
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Debug|x64.Build.0 = Debug|x64
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Debug|x86.ActiveCfg = Debug|Win32
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Debug|x86.Build.0 = Debug|Win32
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Release|x64.ActiveCfg = Release|x64
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Release|x64.Build.0 = Release|x64
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Release|x86.ActiveCfg = Release|Win32
+		{D72A4A80-FEEE-41B0-9B0C-93B1552F7F5B}.Release|x86.Build.0 = Release|Win32
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Debug|x64.ActiveCfg = Debug|x64
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Debug|x64.Build.0 = Debug|x64
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Debug|x86.ActiveCfg = Debug|Win32
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Debug|x86.Build.0 = Debug|Win32
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Release|x64.ActiveCfg = Release|x64
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Release|x64.Build.0 = Release|x64
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Release|x86.ActiveCfg = Release|Win32
+		{89C4B7EC-E7F0-47B6-BCFD-E1E2B6F5BABB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {818F236F-D9EF-4751-88ED-0CE90B2CC394}
+	EndGlobalSection
+EndGlobal

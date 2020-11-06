@@ -1,0 +1,8 @@
+#ifndef DEFINES_H
+#define DEFINES_H
+
+#ifndef LIB_ANDROID_QQ_DECRYPT_SDK_VERSION
+#define LIB_ANDROID_QQ_DECRYPT_SDK_VERSION "1, 0, 0, 1"
+#endif
+
+#endif

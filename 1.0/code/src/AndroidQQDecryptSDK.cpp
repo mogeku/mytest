@@ -13,6 +13,7 @@ namespace fs = std::experimental::filesystem;
 namespace fs = ghc::filesystem;
 #define FOLDER_SPLITOR "/"
 #endif
+#include "common/common.hpp"
 #include "common/md5.h"
 #include "common/Sqlite3Wrapper.hpp"
 #include <algorithm>
@@ -32,7 +33,7 @@ public:
 	AndroidQQDecrypt() {}
 	virtual ~AndroidQQDecrypt() = 0;
 
-	int DecryptAndroidQQDB(const char* decrypted_folder);
+	int DecryptAndroidQQDB(const char* decrypted_folder, const char* temp_folder);
 
 protected:
 	std::string key_path;
@@ -124,7 +125,7 @@ int DecryptByTable(SQLite3Wrapper& db, std::string table_name)
 	return ret;
 }
 
-int AndroidQQDecrypt::DecryptAndroidQQDB(const char* decrypted_folder)
+int AndroidQQDecrypt::DecryptAndroidQQDB(const char* decrypted_folder, const char* temp_folder)
 {
 	int ret = ERROR_NO;
 	if (!fs::exists(db_folder))
@@ -139,6 +140,8 @@ int AndroidQQDecrypt::DecryptAndroidQQDB(const char* decrypted_folder)
 		if (std::string::npos == file.path().stem().u8string().find_first_not_of("0123456789")
 			&& ".db" == file.path().extension())
 		{
+			if (!CopyDatabase(file.path().u8string(), temp_folder + file.path().filename().u8string());)
+				return ERROR_DATABASE_COPY_FILED;
 			SQLite3Wrapper db(file.path().u8string());
 			if (SQLITE_OK != db.OpenDB())
 				continue;
@@ -184,19 +187,19 @@ AndroidQQDecrypt* CreateAndroidQQDecrypt(PhoneType phone_type, const char* backu
 	}
 }
 
-int DecryptAndroidQQDB(PhoneType phone_type, const char* backup_folder, const char* decrypted_folder)
+int DecryptAndroidQQDB(PhoneType phone_type, const char* backup_folder, const char* decrypted_folder, const char* temp_folder)
 {
 	int ret = ERROR_NO;
 	if (NULL == backup_folder || NULL == decrypted_folder)
 		return ERROR_INVALID_PARAM;
-	if (!fs::exists(backup_folder) || !fs::exists(decrypted_folder))
+	if (!fs::exists(backup_folder) || !fs::exists(decrypted_folder) || !fs::exists(temp_folder))
 		return ERROR_PATH_NOT_EXIST;
 
 	AndroidQQDecrypt* decryptor = CreateAndroidQQDecrypt(phone_type, backup_folder);
 	if (nullptr == decryptor)
 		return ERROR_UNKNOW_PHONE_TYPE;
 
-	ret = decryptor->DecryptAndroidQQDB(decrypted_folder);
+	ret = decryptor->DecryptAndroidQQDB(decrypted_folder, temp_folder);
 	delete decryptor;
 
 	return ret;

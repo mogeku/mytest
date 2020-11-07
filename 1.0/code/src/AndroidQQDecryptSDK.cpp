@@ -42,20 +42,6 @@ protected:
 
 AndroidQQDecrypt::~AndroidQQDecrypt() {}
 
-enum FieldType
-{
-	FIELD_TYPE_UNKNOW,
-	FIELD_TYPE_TEXT = 1,
-	FIELD_TYPE_BLOB,
-	FIELD_TYPE_INTEGER,
-	FIELD_TYPE_DOUBLE,
-};
-
-struct FieldInfo
-{
-	int field_type;
-	std::string field_name;
-};
 
 struct TableInfo
 {
@@ -83,7 +69,7 @@ void Decrypt(const std::string& src, std::string& dst)
 
 }
 
-int DecryptByTable(SQLite3Wrapper& db, std::string table_name)
+int DecryptByTable(SQLite3Wrapper& db, const std::string& table_name)
 {
 	int ret = 0;
 
@@ -140,13 +126,11 @@ int AndroidQQDecrypt::DecryptAndroidQQDB(const char* decrypted_folder, const cha
 		if (std::string::npos == file.path().stem().u8string().find_first_not_of("0123456789")
 			&& ".db" == file.path().extension())
 		{
-			if (!CopyDatabase(file.path().u8string(), temp_folder + file.path().filename().u8string());)
-				return ERROR_DATABASE_COPY_FILED;
+			//if (!CopyDatabase(file.path().u8string(), temp_folder + file.path().filename().u8string()))
+			//	return ERROR_DATABASE_COPY_FILED;
 			SQLite3Wrapper db(file.path().u8string());
 			if (SQLITE_OK != db.OpenDB())
 				continue;
-			//TableInfoVector decrypt_table_list;
-			//GetNeedDecryptTableInfoVector(db, decrypt_table_list);
 			DecryptByTable(db, "TroopInfoV2");
 		}
 	}

@@ -38,7 +38,7 @@ enum QQDecryptErrorType
 };
 
 ANDROIDQQDECRYPTSDK_API int InitAndroidQQDecryptSDK();
-ANDROIDQQDECRYPTSDK_API int  DecryptAndroidQQDB(PhoneType phone_type, const char* backup_folder, const char* decrypted_folder);
+ANDROIDQQDECRYPTSDK_API int  DecryptAndroidQQDB(PhoneType phone_type, const char* backup_folder, const char* decrypted_folder, const char* temp_folder);
 ANDROIDQQDECRYPTSDK_API void StopAndroidQQDBDecrypt();
 
 #endif 

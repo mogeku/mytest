@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\code\inc\version.hpp" />
     <ClInclude Include="..\..\..\code\interface\AndroidQQDecryptSDK.hpp" />
+    <ClInclude Include="..\..\..\code\src\common\common.hpp" />
     <ClInclude Include="..\..\..\code\src\common\filesystem.hpp" />
     <ClInclude Include="..\..\..\code\src\common\md5.h" />
     <ClInclude Include="..\..\..\code\src\common\sqlite3.h" />
@@ -29,10 +30,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\code\src\AndroidQQDecryptSDK.cpp" />
+    <ClCompile Include="..\..\..\code\src\common\common.cpp" />
     <ClCompile Include="..\..\..\code\src\common\md5.cpp" />
     <ClCompile Include="..\..\..\code\src\common\sqlite3.c" />
     <ClCompile Include="..\..\..\code\src\common\Sqlite3Wrapper.cpp" />
     <ClCompile Include="..\..\..\code\src\common\StringConvertion.cpp" />
+    <ClCompile Include="..\..\..\code\test\Test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -90,6 +93,8 @@
     <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\..\bin\$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSdk_71A_IncludePath);$(VCInstallDir)Auxiliary\VS\UnitTest\include;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSdk_71A_LibraryPath_x86);$(VCInstallDir)Auxiliary\VS\UnitTest\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>ANDROIDWECHATDECRYPTSDK</TargetName>

@@ -19,6 +19,9 @@
     <Filter Include="src\common">
       <UniqueIdentifier>{037e7fc8-09ee-4915-9fde-739d56ac7eae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{05294fb4-b43b-4bf3-95f7-6e5e9ae6da7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\code\src\common\md5.h">
@@ -42,6 +45,9 @@
     <ClInclude Include="..\..\..\code\src\common\filesystem.hpp">
       <Filter>src\common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\code\src\common\common.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\code\src\common\md5.cpp">
@@ -58,6 +64,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\code\src\AndroidQQDecryptSDK.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\src\common\common.cpp">
+      <Filter>src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\test\Test.cpp">
+      <Filter>test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

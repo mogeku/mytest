@@ -1,13 +1,5 @@
 ﻿D:\Program Files\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Platforms\Win32\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: 面向 Windows XP 的支持已被弃用，将来的 Visual Studio 版本不再提供该支持。请访问 https://go.microsoft.com/fwlink/?linkid=2023588，获取详细信息。
-  AndroidQQDecryptSDK.cpp
+  common.cpp
 d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(188): warning C4244: “=”: 从“int64_t”转换到“int”，可能丢失数据
 d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(198): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(22): warning C4273: “InitAndroidQQDecryptSDK”: dll 链接不一致
-  d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\interface\androidqqdecryptsdk.hpp(39): note: 参见“InitAndroidQQDecryptSDK”的前一个定义
-d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(83): warning C4018: “<”: 有符号/无符号不匹配
-d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(152): warning C4273: “DecryptAndroidQQDB”: dll 链接不一致
-  d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\interface\androidqqdecryptsdk.hpp(40): note: 参见“DecryptAndroidQQDB”的前一个定义
-d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(171): warning C4273: “StopAndroidQQDBDecrypt”: dll 链接不一致
-  d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\interface\androidqqdecryptsdk.hpp(41): note: 参见“StopAndroidQQDBDecrypt”的前一个定义
-    正在创建库 D:\Project\svn\lib_AndroidQQDecrypt_SDK\1.0\ide\vs2017\..\..\bin\Debug\AndroidQQDecryptSDK.lib 和对象 D:\Project\svn\lib_AndroidQQDecrypt_SDK\1.0\ide\vs2017\..\..\bin\Debug\AndroidQQDecryptSDK.exp
   AndroidQQDecryptSDK.vcxproj -> D:\Project\svn\lib_AndroidQQDecrypt_SDK\1.0\ide\vs2017\..\..\bin\Debug\AndroidQQDecryptSDK.dll

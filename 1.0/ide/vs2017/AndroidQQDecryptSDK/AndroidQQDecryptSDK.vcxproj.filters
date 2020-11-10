@@ -48,6 +48,9 @@
     <ClInclude Include="..\..\..\code\src\common\common.hpp">
       <Filter>src\common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\code\src\common\AndroidQQDecrypt.hpp">
+      <Filter>src\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\code\src\common\md5.cpp">
@@ -70,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\code\test\Test.cpp">
       <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\code\src\common\AndroidQQDecrypt.cpp">
+      <Filter>src\common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

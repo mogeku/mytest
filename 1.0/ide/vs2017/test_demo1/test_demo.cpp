@@ -8,8 +8,7 @@ int main()
 {
 	int ret = InitAndroidQQDecryptSDK();
 
-	ret = DecryptAndroidQQDB(HUAWEI, R"(D:\DB\android\qq\2020-11-06_10-21-52)", R"(D:\DB\android\qq\2020-11-06_10-21-52)", R"(D:\DB\android\qq\2020-11-06_10-21-52\temp)");
-
+	ret = DecryptAndroidQQDB(HUAWEI, R"(D:\DB\android\qq\2020-11-06_10-21-52)", R"(D:\DB\android\qq\2020-11-06_10-21-52)");
 	std::cout << "ret = " << ret << std::endl;
 
     //std::cout << "Hello World!\n";

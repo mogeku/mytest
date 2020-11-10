@@ -9,27 +9,49 @@ namespace fs = ghc::filesystem;
 #endif
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <cassert>
 #include "common.hpp"
+#include "StringConvertion.hpp"
 #include "Sqlite3Wrapper.hpp"
 
-bool CopyDatabase(const std::string& src, const std::string& dst_folder)
+std::ofstream OpenOutPutFileUtfSafe(const std::string& filename, int mode)
+{
+#ifdef WIN32
+	std::wstring w_filename = Utf8ToUtf16(filename);
+	return std::ofstream(w_filename, mode);
+#else
+	return std::ofstream(filename, mode);
+#endif
+}
+
+std::ifstream OpenInPutFileUtfSafe(const std::string& filename, int mode)
+{
+#ifdef WIN32
+	std::wstring w_filename = Utf8ToUtf16(filename);
+	return std::ifstream(w_filename, mode);
+#else
+	return std::ifstream(filename, mode);
+#endif
+}
+
+bool IsChinese(unsigned char ch)
+{
+	return 0 != (ch & 0x80);
+}
+
+bool CopyDatabase(const std::string& src, const std::string& dst)
 {
 	bool ret = true;
-	fs::is_directory(dst_folder);
-	if (!fs::exists(src) || !fs::is_directory(dst_folder))
+	if (!fs::exists(src) || fs::is_directory(dst))
 		return false;
 
-	fs::path p_src(src);
-	if (".db" != p_src.extension())
-		return false;
-	fs::path p_dst_file(dst_folder + FOLDER_SPLITOR + p_src.filename().u8string());
-	if (fs::exists(p_dst_file))
-		fs::remove(p_dst_file);
+	if (fs::exists(dst))
+		fs::remove(dst);
 
 	try
 	{
-		ret = fs::copy_file(src, p_dst_file);
+		ret = fs::copy_file(src, dst);
 	}
 	catch (fs::filesystem_error& e)
 	{
@@ -42,6 +64,8 @@ bool CopyDatabase(const std::string& src, const std::string& dst_folder)
 std::string GetCreateTableSql(SQLite3Wrapper& db, const std::string& table_name)
 {
 	std::string ret;
+	if (!db.IsOpen())
+		return ret;
 	SQLite3Stmt create_sql_query_st = db.GetDBStmt("SELECT sql FROM sqlite_master WHERE type = \'table\' AND tbl_name = ?");
 	create_sql_query_st.BindText(1, table_name, SQLITE_STATIC);
 	if (SQLITE_ROW == create_sql_query_st.Step())
@@ -66,7 +90,6 @@ std::vector<std::string>& Split(const std::string& str, char delim, std::vector<
 
 FieldType GetFieldTypeFromStr(std::string str)
 {
-	assert(str.empty());
 	if ("TEXT" == str || "text" == str)
 		return FIELD_TYPE_TEXT;
 	else if ("BLOB" == str || "blob" == str)
@@ -79,13 +102,13 @@ FieldType GetFieldTypeFromStr(std::string str)
 		return FIELD_TYPE_UNKNOW;
 }
 
-bool AnalyseCreateSql(const std::string& sql, std::vector<FieldInfo>& fields)
+bool AnalyseCreateSql(const std::string& sql, std::vector<FieldInfo>& fields, FieldFilter filter = nullptr)
 {
 	bool ret = true;
 	if (sql.empty())
 		return false;
 
-	size_t start = sql.find_first_of("(");
+	size_t start = sql.find_first_of("(") + 1;
 	size_t end = sql.find_last_of(")");
 	std::string field_info_sql(sql.cbegin() + start, sql.cbegin() + end);
 	if (field_info_sql.empty())
@@ -101,16 +124,55 @@ bool AnalyseCreateSql(const std::string& sql, std::vector<FieldInfo>& fields)
 		iss >> field.field_name;
 		iss >> field_type_str;
 		field.field_type = GetFieldTypeFromStr(field_type_str);
+		if (FIELD_TYPE_UNKNOW == field.field_type)
+			continue;
+		if (nullptr != filter && !filter(field))
+			continue;
 		fields.push_back(field);
 	}
 
 	return ret;
 }
 
-bool GetTableFieldInfo(SQLite3Wrapper& db, const std::string& table_name, std::vector<FieldInfo>& fields)
+bool GetTableFieldInfo(SQLite3Wrapper& db, const std::string& table_name, std::vector<FieldInfo>& fields, FieldFilter filter = nullptr)
 {
 	bool ret = true;
+	if (!db.IsOpen())
+		return false;
 	std::string create_sql = GetCreateTableSql(db, table_name);
+	if (!AnalyseCreateSql(create_sql, fields, filter))
+		return false;
 	
+	return ret;
+}
+
+bool GetTableList(SQLite3Wrapper& db, std::vector<std::string>& table_list)
+{
+	bool ret = true;
+	if (!db.IsOpen())
+		return false;
+
+	SQLite3Stmt stmt = db.GetDBStmt("SELECT DISTINCT tbl_name FROM sqlite_master WHERE type = ?");
+	stmt.BindText(1, "table", SQLITE_TRANSIENT);
+	while (SQLITE_ROW == stmt.Step())
+	{
+		table_list.push_back(stmt.GetColumnText(0));
+	}
+	stmt.Finalize();
+	return ret;
+}
+
+std::string PackFieldsToStr(const std::vector<FieldInfo>& fields, const char* delim)
+
+{
+	std::string ret;
+	if (fields.empty())
+		return ret;
+
+	for (auto field : fields)
+	{
+		ret += field.field_name + delim;
+	}
+	ret.assign(ret.cbegin(), ret.cend() - 1);
 	return ret;
 }

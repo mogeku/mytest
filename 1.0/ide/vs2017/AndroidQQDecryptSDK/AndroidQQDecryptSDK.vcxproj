@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\code\inc\version.hpp" />
     <ClInclude Include="..\..\..\code\interface\AndroidQQDecryptSDK.hpp" />
+    <ClInclude Include="..\..\..\code\src\common\AndroidQQDecrypt.hpp" />
     <ClInclude Include="..\..\..\code\src\common\common.hpp" />
     <ClInclude Include="..\..\..\code\src\common\filesystem.hpp" />
     <ClInclude Include="..\..\..\code\src\common\md5.h" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\code\src\AndroidQQDecryptSDK.cpp" />
+    <ClCompile Include="..\..\..\code\src\common\AndroidQQDecrypt.cpp" />
     <ClCompile Include="..\..\..\code\src\common\common.cpp" />
     <ClCompile Include="..\..\..\code\src\common\md5.cpp" />
     <ClCompile Include="..\..\..\code\src\common\sqlite3.c" />

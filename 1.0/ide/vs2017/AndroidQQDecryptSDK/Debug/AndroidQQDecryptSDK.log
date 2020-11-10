@@ -1,5 +1,21 @@
 ﻿D:\Program Files\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Platforms\Win32\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: 面向 Windows XP 的支持已被弃用，将来的 Visual Studio 版本不再提供该支持。请访问 https://go.microsoft.com/fwlink/?linkid=2023588，获取详细信息。
-  common.cpp
+  AndroidQQDecryptSDK.cpp
 d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(188): warning C4244: “=”: 从“int64_t”转换到“int”，可能丢失数据
 d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(198): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\androidqqdecrypt.hpp(15): warning C4091: “extern ”: 没有声明变量时忽略“FieldType”的左侧
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(24): warning C4273: “InitAndroidQQDecryptSDK”: dll 链接不一致
+  d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\interface\androidqqdecryptsdk.hpp(42): note: 参见“InitAndroidQQDecryptSDK”的前一个定义
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(46): warning C4273: “DecryptAndroidQQDB”: dll 链接不一致
+  d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\interface\androidqqdecryptsdk.hpp(43): note: 参见“DecryptAndroidQQDB”的前一个定义
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\androidqqdecryptsdk.cpp(65): warning C4273: “StopAndroidQQDBDecrypt”: dll 链接不一致
+  d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\interface\androidqqdecryptsdk.hpp(44): note: 参见“StopAndroidQQDBDecrypt”的前一个定义
+  AndroidQQDecrypt.cpp
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(188): warning C4244: “=”: 从“int64_t”转换到“int”，可能丢失数据
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(198): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\androidqqdecrypt.hpp(15): warning C4091: “extern ”: 没有声明变量时忽略“FieldType”的左侧
+  Test.cpp
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(188): warning C4244: “=”: 从“int64_t”转换到“int”，可能丢失数据
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\sqlite3wrapper.hpp(198): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\project\svn\lib_androidqqdecrypt_sdk\1.0\code\src\common\androidqqdecrypt.hpp(15): warning C4091: “extern ”: 没有声明变量时忽略“FieldType”的左侧
+  正在生成代码...
   AndroidQQDecryptSDK.vcxproj -> D:\Project\svn\lib_AndroidQQDecrypt_SDK\1.0\ide\vs2017\..\..\bin\Debug\AndroidQQDecryptSDK.dll

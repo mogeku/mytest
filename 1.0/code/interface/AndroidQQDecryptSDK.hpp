@@ -34,11 +34,13 @@ enum QQDecryptErrorType
 	ERROR_PATH_NOT_EXIST,
 	ERROR_UNKNOW_PHONE_TYPE,
 	ERROR_PATH_NOT_DIR,
-	ERROR_DATABASE_COPY_FILED,
+	ERROR_DATABASE_COPY_FAILED,
+	ERROR_GET_TABLE_FIELD_FAILED,
+	ERROR_SEARCH_KEY_FAILED,
 };
 
 ANDROIDQQDECRYPTSDK_API int InitAndroidQQDecryptSDK();
-ANDROIDQQDECRYPTSDK_API int  DecryptAndroidQQDB(PhoneType phone_type, const char* backup_folder, const char* decrypted_folder, const char* temp_folder);
+ANDROIDQQDECRYPTSDK_API int  DecryptAndroidQQDB(PhoneType phone_type, const char* backup_folder, const char* decrypted_folder);
 ANDROIDQQDECRYPTSDK_API void StopAndroidQQDBDecrypt();
 
 #endif 
